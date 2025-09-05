@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -43,7 +42,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* Стили для элемента с id="header" */
         #header {
             background: linear-gradient(135deg, #ff6b6b 0%, #ff4d4d 100%);
             color: white;
@@ -63,7 +61,6 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Стили для элемента с id="main-content" */
         #main-content {
             background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
             color: white;
@@ -91,7 +88,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        /* Стили для элементов с классом content-block */
         .content-block {
             background: linear-gradient(135deg, #ffd93d 0%, #ff9c3d 100%);
             padding: 20px;
@@ -121,7 +117,6 @@
             padding-left: 20px;
         }
 
-        /* Стили для кнопки */
         button {
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             color: white;
@@ -139,7 +134,7 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        /* Стиль для сообщения с приветствием */
+
         #greeting-message {
             font-weight: bold;
             font-size: 18px;
@@ -152,7 +147,7 @@
             animation: fadeIn 1s ease-in;
         }
 
-        /* Дополнительные стили для разнообразия */
+
         .content-block:nth-child(4) {
             background: linear-gradient(135deg, #ff6b6b 0%, #c04848 100%);
             color: white;
@@ -171,7 +166,7 @@
             color: white;
         }
 
-        /* Адаптивность */
+
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -193,7 +188,7 @@
     </style>
 </head>
 <body>
-    <!-- Элементы с уникальными идентификаторами -->
+
     <div id="header">
         <h1>💖 Добро пожаловать на мою страницу! 💖</h1>
         <p>Этот блок создан, чтобы поднять вам настроение!</p>
@@ -203,11 +198,11 @@
         <h2>✨ Основное содержимое ✨</h2>
         <p>Здесь вы найдете интересные элементы и позитивный контент</p>
         <div class="local-image">
-            📷 Ваше изображение здесь!
+            📷 Привет!
         </div>
     </div>
+
     
-    <!-- Элементы с общим классом -->
     <div class="content-block">
         <h3>😊 Блок 1: Цитаты для хорошего настроения</h3>
         <p>Несколько вдохновляющих мыслей:</p>
@@ -232,7 +227,7 @@
     </div>
 
     <script>
-        // Функция для создания прыгающего сердечка
+        
         function createHeart() {
             const heart = document.createElement('div');
             heart.innerHTML = '💖';
@@ -246,7 +241,7 @@
             
             document.body.appendChild(heart);
             
-            // Анимация движения
+          
             let x = startX;
             let y = startY;
             let xSpeed = (Math.random() - 0.5) * 4;
@@ -259,7 +254,7 @@
                 x += xSpeed;
                 y += ySpeed;
                 
-                // Проверка столкновения с границами
+                
                 if (x <= 0) {
                     x = 0;
                     xSpeed = -xSpeed * bounce;
@@ -272,7 +267,7 @@
                     y = window.innerHeight - 30;
                     ySpeed = -ySpeed * bounce;
                     
-                    // Если сердечко почти остановилось, удаляем его
+                
                     if (Math.abs(ySpeed) < 0.5) {
                         heart.remove();
                         return;
@@ -282,7 +277,7 @@
                 heart.style.left = x + 'px';
                 heart.style.top = y + 'px';
                 
-                // Продолжаем анимацию только если сердечко еще существует
+             
                 if (document.body.contains(heart)) {
                     requestAnimationFrame(animate);
                 }
@@ -290,7 +285,7 @@
             
             animate();
             
-            // Удаляем сердечко через 15 секунд на всякий случай
+            
             setTimeout(() => {
                 if (heart.parentNode) {
                     heart.remove();
@@ -298,13 +293,13 @@
             }, 15000);
         }
         
-        // Создаем несколько сердечек с интервалом
+        
         function startHearts() {
             createHeart();
             setInterval(createHeart, 2000);
         }
         
-        // Функция для приветствия
+       
         function showGreeting() {
             const greetings = [
                 "Желаю вам прекрасного дня! 🌞",
@@ -317,28 +312,27 @@
             const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
             document.getElementById('greeting-message').textContent = randomGreeting;
             
-            // Добавляем анимацию
+      
             const messageElement = document.getElementById('greeting-message');
             messageElement.style.animation = 'none';
             setTimeout(() => {
                 messageElement.style.animation = 'fadeIn 1s ease-in';
             }, 10);
             
-            // Создаем дополнительное сердечко при клике
+         
             createHeart();
         }
-        
-        // Запускаем анимацию сердечек после загрузки страницы
+     
         window.addEventListener('load', startHearts);
         
-        // Также создаем сердечко при движении мыши
+       
         let mouseMoveTimer;
         document.addEventListener('mousemove', () => {
             clearTimeout(mouseMoveTimer);
             mouseMoveTimer = setTimeout(createHeart, 300);
         });
         
-        // Создаем сердечко при клике в любом месте
+  
         document.addEventListener('click', createHeart);
     </script>
 </body>
