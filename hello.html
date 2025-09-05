@@ -19,7 +19,6 @@
             color: #333;
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
         /* Анимации */
@@ -34,13 +33,6 @@
             100% { transform: scale(1); }
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(-5deg); }
-            50% { transform: translateY(0) rotate(0deg); }
-            75% { transform: translateY(-10px) rotate(5deg); }
-        }
-
         /* Прыгающее сердечко */
         .heart {
             position: fixed;
@@ -48,8 +40,8 @@
             color: #ff4d4d;
             z-index: 1000;
             pointer-events: none;
-            animation: bounce 2s infinite;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
         }
 
         /* Стили для элемента с id="header" */
@@ -199,21 +191,9 @@
                 height: 120px;
             }
         }
-
-        .hearts-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
     </style>
 </head>
 <body>
-    <div class="hearts-container" id="heartsContainer"></div>
-
     <!-- Элементы с уникальными идентификаторами -->
     <div id="header">
         <h1>💖 Добро пожаловать на мою страницу! 💖</h1>
@@ -259,13 +239,13 @@
             heart.innerHTML = '💖';
             heart.classList.add('heart');
             
-            const startX = Math.random() * window.innerWidth;
+            const startX = Math.random() * (window.innerWidth - 50);
             const startY = -50;
             
             heart.style.left = startX + 'px';
             heart.style.top = startY + 'px';
             
-            document.getElementById('heartsContainer').appendChild(heart);
+            document.body.appendChild(heart);
             
             // Анимация движения
             let x = startX;
@@ -281,14 +261,17 @@
                 y += ySpeed;
                 
                 // Проверка столкновения с границами
-                if (x <= 0 || x >= window.innerWidth - 30) {
+                if (x <= 0) {
+                    x = 0;
                     xSpeed = -xSpeed * bounce;
-                    x = x <= 0 ? 0 : window.innerWidth - 30;
+                } else if (x >= window.innerWidth - 30) {
+                    x = window.innerWidth - 30;
+                    xSpeed = -xSpeed * bounce;
                 }
                 
                 if (y >= window.innerHeight - 30) {
-                    ySpeed = -ySpeed * bounce;
                     y = window.innerHeight - 30;
+                    ySpeed = -ySpeed * bounce;
                     
                     // Если сердечко почти остановилось, удаляем его
                     if (Math.abs(ySpeed) < 0.5) {
@@ -300,17 +283,20 @@
                 heart.style.left = x + 'px';
                 heart.style.top = y + 'px';
                 
-                requestAnimationFrame(animate);
+                // Продолжаем анимацию только если сердечко еще существует
+                if (document.body.contains(heart)) {
+                    requestAnimationFrame(animate);
+                }
             }
             
             animate();
             
-            // Удаляем сердечко через 10 секунд на всякий случай
+            // Удаляем сердечко через 15 секунд на всякий случай
             setTimeout(() => {
                 if (heart.parentNode) {
                     heart.remove();
                 }
-            }, 10000);
+            }, 15000);
         }
         
         // Создаем несколько сердечек с интервалом
@@ -350,8 +336,11 @@
         let mouseMoveTimer;
         document.addEventListener('mousemove', () => {
             clearTimeout(mouseMoveTimer);
-            mouseMoveTimer = setTimeout(createHeart, 500);
+            mouseMoveTimer = setTimeout(createHeart, 300);
         });
+        
+        // Создаем сердечко при клике в любом месте
+        document.addEventListener('click', createHeart);
     </script>
 </body>
 </html>
