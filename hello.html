@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Работа с элементами div</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        var x = new String('Hello');
-        var result = x.replace('Hello', 'привет');
-        document.write(result); // Выводит "привет" на страницу
-    </script>
+    <!-- Элементы с уникальными идентификаторами -->
+    <div id="header">
+        <h1>Добро пожаловать на мою страницу</h1>
+        <p>Это верхний блок с уникальным идентификатором</p>
+    </div>
+    
+    <div id="main-content">
+        <h2>Основное содержимое</h2>
+        <p>Этот блок также имеет уникальный идентификатор</p>
+        <img src="https://via.placeholder.com/300x150" alt="Пример изображения">
+    </div>
+    
+    <!-- Элементы с общим классом -->
+    <div class="content-block">
+        <h3>Блок 1 с общим классом</h3>
+        <p>Содержимое первого блока с классом content-block</p>
+        <ul>
+            <li>Элемент списка 1</li>
+            <li>Элемент списка 2</li>
+            <li>Элемент списка 3</li>
+        </ul>
+    </div>
+    
+    <div class="content-block">
+        <h3>Блок 2 с общим классом</h3>
+        <p>Содержимое второго блока с классом content-block</p>
+        <p>Здесь находится дополнительная информация</p>
+    </div>
+    
+    <div class="content-block">
+        <h3>Блок 3 с общим классом</h3>
+        <p>Содержимое третьего блока с классом content-block</p>
+        <p>Этот блок содержит различные типы контента</p>
+        <ol>
+            <li>Нумерованный элемент 1</li>
+            <li>Нумерованный элемент 2</li>
+        </ol>
+    </div>
 </body>
 </html>
