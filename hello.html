@@ -4,10 +4,12 @@
     <title>Test</title>
 </head>
 <body>
+    <div id="output"></div> <!--  -->
+    
     <script>
         var x = new String('Hello');
         var result = x.replace('Hello', 'привет');
-        document.write(result); // или console.log(result);
+        document.getElementById('output').innerText = result; // Вывод в элемент
     </script>
 </body>
 </html>
