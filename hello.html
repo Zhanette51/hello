@@ -3,47 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Работа с элементами div</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Приветственная страница с элементами div</title>
+    <style>
+        /* Общие стили для body */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9f9f9 0%, #e3f2fd 100%);
+            color: #333;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Стили для элемента с id="header" */
+        #header {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 3px solid #1B5E20;
+            text-align: center;
+            animation: pulse 3s infinite;
+        }
+
+        #header h1 {
+            margin-top: 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Стили для элемента с id="main-content" */
+        #main-content {
+            background: linear-gradient(135deg, #2196F3 0%, #0D47A1 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 3px solid #0D47A1;
+            text-align: center;
+        }
+
+        #main-content img {
+            max-width: 100%;
+            height: auto;
+            border: 4px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        #main-content img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Стили для элементов с классом content-block */
+        .content-block {
+            background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #FF6F00;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .content-block h3 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .content-block ul, .content-block ol {
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        /* Стили для кнопки */
+        button {
+            background: linear-gradient(135deg, #E91E63 0%, #AD1457 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Стиль для сообщения с приветствием */
+        #greeting-message {
+            font-weight: bold;
+            font-size: 18px;
+            color: #E91E63;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-left: 4px solid #E91E63;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Дополнительные стили для разнообразия */
+        .content-block:nth-child(4) {
+            background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+            color: white;
+        }
+
+        .content-block:nth-child(4) h3 {
+            color: white;
+        }
+
+        .content-block:nth-child(5) {
+            background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%);
+            color: white;
+        }
+
+        .content-block:nth-child(5) h3 {
+            color: white;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            #header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-block {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Элементы с уникальными идентификаторами -->
     <div id="header">
-        <h1>Добро пожаловать на мою страницу</h1>
-        <p>Это верхний блок с уникальным идентификатором</p>
+        <h1>🎉 Добро пожаловать на мою страницу! 🎉</h1>
+        <p>Этот блок создан, чтобы поднять вам настроение!</p>
     </div>
     
     <div id="main-content">
-        <h2>Основное содержимое</h2>
-        <p>Этот блок также имеет уникальный идентификатор</p>
-        <img src="https://via.placeholder.com/300x150" alt="Пример изображения">
+        <h2>✨ Основное содержимое ✨</h2>
+        <p>Здесь вы найдете интересные элементы и позитивный контент</p>
+        <img src="https://via.placeholder.com/300x150/4CAF50/ffffff?text=Улыбнись!" alt="Позитивное изображение">
     </div>
     
     <!-- Элементы с общим классом -->
     <div class="content-block">
-        <h3>Блок 1 с общим классом</h3>
-        <p>Содержимое первого блока с классом content-block</p>
+        <h3>😊 Блок 1: Цитаты для хорошего настроения</h3>
+        <p>Несколько вдохновляющих мыслей:</p>
         <ul>
-            <li>Элемент списка 1</li>
-            <li>Элемент списка 2</li>
-            <li>Элемент списка 3</li>
+            <li>"Сегодняшний день - это подарок. Поэтому он и называется настоящим!"</li>
+            <li>"Улыбка - это кривая, которая выпрямляет все трудности"</li>
+            <li>"Счастье не в том, чтобы делать всегда то, что хочешь, а в том, чтобы всегда хотеть того, что делаешь"</li>
         </ul>
     </div>
     
     <div class="content-block">
-        <h3>Блок 2 с общим классом</h3>
-        <p>Содержимое второго блока с классом content-block</p>
-        <p>Здесь находится дополнительная информация</p>
+        <h3>🌈 Блок 2: Факты о счастье</h3>
+        <p>Знаете ли вы, что:</p>
+        <p>Всего 10 минут смеха в день могут значительно улучшить ваше здоровье и настроение!</p>
     </div>
     
     <div class="content-block">
-        <h3>Блок 3 с общим классом</h3>
-        <p>Содержимое третьего блока с классом content-block</p>
-        <p>Этот блок содержит различные типы контента</p>
-        <ol>
-            <li>Нумерованный элемент 1</li>
-            <li>Нумерованный элемент 2</li>
-        </ol>
+        <h3>🎯 Блок 3: Интерактивное приветствие</h3>
+        <p>Нажмите на кнопку ниже для персонального приветствия:</p>
+        <button onclick="showGreeting()">Получить приветствие!</button>
+        <p id="greeting-message"></p>
     </div>
+
+    <script>
+        function showGreeting() {
+            const greetings = [
+                "Желаю вам прекрасного дня! 🌞",
+                "Пусть сегодня произойдет что-то удивительное! ✨",
+                "Вы выглядите просто великолепно сегодня! 💫",
+                "Ваша улыбка делает мир лучше! 😊",
+                "Сегодня ваш день - наслаждайтесь каждым моментом! 🎉"
+            ];
+            
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            document.getElementById('greeting-message').textContent = randomGreeting;
+            
+            // Добавляем анимацию
+            const messageElement = document.getElementById('greeting-message');
+            messageElement.style.animation = 'none';
+            setTimeout(() => {
+                messageElement.style.animation = 'fadeIn 1s ease-in';
+            }, 10);
+        }
+    </script>
 </body>
 </html>
